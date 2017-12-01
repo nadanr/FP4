@@ -6409,7 +6409,7 @@ argstr(int n, char **pp)
 80104809:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
 
 80104810 <syscall>:
-[SYS_mkfile]  sys_mkfile,
+[SYS_mkfile] sys_mkfile,
 };
 
 void
@@ -6765,7 +6765,7 @@ create(char *path, short type, short major, short minor)
 80104a09:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
 
 80104a10 <argfd.constprop.0>:
-//extern int sys_getuid(void);
+#include "fcntl.h"
 
 // Fetch the nth word-sized system call argument as a file descriptor
 // and return both the descriptor and the corresponding struct file.
@@ -6782,7 +6782,7 @@ argfd(int n, int *pfd, struct file **pf)
 
   if(argint(n, &fd) < 0)
 80104a17:	8d 45 f4             	lea    -0xc(%ebp),%eax
-//extern int sys_getuid(void);
+#include "fcntl.h"
 
 // Fetch the nth word-sized system call argument as a file descriptor
 // and return both the descriptor and the corresponding struct file.
@@ -8755,7 +8755,7 @@ sys_mkfile(void)
   return 0;
 801054a9:	83 c4 10             	add    $0x10,%esp
 801054ac:	31 c0                	xor    %eax,%eax
-} 
+}
 801054ae:	c9                   	leave  
 801054af:	c3                   	ret    
   char *path;
@@ -8771,7 +8771,7 @@ sys_mkfile(void)
   iunlockput(ip);
   end_op();
   return 0;
-} 
+}
 801054ba:	c9                   	leave  
 801054bb:	c3                   	ret    
 801054bc:	66 90                	xchg   %ax,%ax
