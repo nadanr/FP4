@@ -14,7 +14,9 @@ int main(int argc, char *argv[])
     if(mkfile(argv[i]) < 0){
       printf(2, "touch: %s gagal dibuat\n", argv[i]);
       break;}
-      }
-
+      else {
+	printf(2, "touch: %s berhasil dibuat\n", argv[i]);
+		}
+	}
   exit();
 }
