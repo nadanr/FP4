@@ -175,6 +175,7 @@ UPROGS=\
 	_wc\
 	_touch\
 	_cp\
+	_cd\
 	_zombie\
 	_mv\
 
@@ -245,8 +246,13 @@ qemu-nox-gdb: fs.img xv6.img .gdbinit
 
 EXTRA=\
 	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c\
+<<<<<<< Updated upstream
 	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c touch.c cp.c zombie.c\
 	printf.c umalloc.c mv.c\
+=======
+	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c touch.c cp.c cd.c zombie.c\
+	printf.c umalloc.c\
+>>>>>>> Stashed changes
 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
 	.gdbinit.tmpl gdbutil\
 
