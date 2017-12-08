@@ -17,6 +17,18 @@ int main(int argc, char *argv[])
 		exit();
 	}
 	
+	if(argc < 3){
+	printf(2 , "copy : Minimal 2 argumen\n");
+	exit();
+	}
+	else if (argc > 1 && argv[1][0] == '*'){
+		if ( link(argv[2], argv[3]) < 0){
+		printf(1 , "copy : LOL\n");
+		}
+				exit();
+
+	}
+	
 	int fd_src = open(argv[1], O_RDONLY);
 	if (fd_src == -1)
 	{
