@@ -60,7 +60,7 @@ int main (int argc, char *argv[]){
   		}
 
 		  if ((ft = open(argv[2], O_CREATE|O_WRONLY)) < 0) {
-    		printf(2, "copy: Tisak dapat membuka tujuan %s\n", argv[2]);
+    		printf(2, "copy: Tidak dapat membuka tujuan %s\n", argv[2]);
     		exit();
  		 }
   
@@ -70,7 +70,7 @@ int main (int argc, char *argv[]){
       break;
  	 }
   	if (r < 0 || w < 0)
-    	printf(2, "copy: error copying %s to %s\n", argv[1], argv[2]);
+    	printf(2, "copy: error mengcopy %s ke %s\n", argv[1], argv[2]);
 
   close(fs);
   close(ft);

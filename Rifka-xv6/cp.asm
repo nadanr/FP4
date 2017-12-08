@@ -92,7 +92,7 @@ int main (int argc, char *argv[]){
   8a:	8d 9d e8 fd ff ff    	lea    -0x218(%ebp),%ebx
   90:	eb 26                	jmp    b8 <main+0xb8>
   92:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
-    		printf(2, "copy: Tisak dapat membuka tujuan %s\n", argv[2]);
+    		printf(2, "copy: Tidak dapat membuka tujuan %s\n", argv[2]);
     		exit();
  		 }
   
@@ -106,7 +106,7 @@ int main (int argc, char *argv[]){
   	  if (w != r || w < 0) 
   a8:	83 c4 10             	add    $0x10,%esp
   ab:	39 c6                	cmp    %eax,%esi
-    		printf(2, "copy: Tisak dapat membuka tujuan %s\n", argv[2]);
+    		printf(2, "copy: Tidak dapat membuka tujuan %s\n", argv[2]);
     		exit();
  		 }
   
@@ -119,7 +119,7 @@ int main (int argc, char *argv[]){
   b4:	84 c0                	test   %al,%al
   b6:	75 1d                	jne    d5 <main+0xd5>
 		  if ((ft = open(argv[2], O_CREATE|O_WRONLY)) < 0) {
-    		printf(2, "copy: Tisak dapat membuka tujuan %s\n", argv[2]);
+    		printf(2, "copy: Tidak dapat membuka tujuan %s\n", argv[2]);
     		exit();
  		 }
   
@@ -146,7 +146,7 @@ int main (int argc, char *argv[]){
   e4:	c1 e9 1f             	shr    $0x1f,%ecx
   e7:	84 c9                	test   %cl,%cl
   e9:	0f 85 b9 00 00 00    	jne    1a8 <main+0x1a8>
-    	printf(2, "copy: error copying %s to %s\n", argv[1], argv[2]);
+    	printf(2, "copy: error mengcopy %s ke %s\n", argv[1], argv[2]);
 
   close(fs);
   ef:	83 ec 0c             	sub    $0xc,%esp
@@ -270,11 +270,11 @@ exit();
       break;
  	 }
   	if (r < 0 || w < 0)
-    	printf(2, "copy: error copying %s to %s\n", argv[1], argv[2]);
+    	printf(2, "copy: error mengcopy %s ke %s\n", argv[1], argv[2]);
  1a8:	8b 85 bc fd ff ff    	mov    -0x244(%ebp),%eax
  1ae:	ff 70 08             	pushl  0x8(%eax)
  1b1:	ff 70 04             	pushl  0x4(%eax)
- 1b4:	68 a5 09 00 00       	push   $0x9a5
+ 1b4:	68 60 0a 00 00       	push   $0xa60
  1b9:	6a 02                	push   $0x2
  1bb:	e8 90 04 00 00       	call   650 <printf>
  1c0:	83 c4 10             	add    $0x10,%esp
@@ -284,11 +284,11 @@ exit();
   		}
 
 		  if ((ft = open(argv[2], O_CREATE|O_WRONLY)) < 0) {
-    		printf(2, "copy: Tisak dapat membuka tujuan %s\n", argv[2]);
+    		printf(2, "copy: Tidak dapat membuka tujuan %s\n", argv[2]);
  1c8:	8b 85 bc fd ff ff    	mov    -0x244(%ebp),%eax
  1ce:	52                   	push   %edx
  1cf:	ff 70 08             	pushl  0x8(%eax)
- 1d2:	68 54 0a 00 00       	push   $0xa54
+ 1d2:	68 38 0a 00 00       	push   $0xa38
  1d7:	6a 02                	push   $0x2
  1d9:	e8 72 04 00 00       	call   650 <printf>
     		exit();
@@ -368,7 +368,7 @@ exit();
 				printf(1 , "copy : tujuan bukan direktori\n");
  259:	50                   	push   %eax
  25a:	50                   	push   %eax
- 25b:	68 0c 0a 00 00       	push   $0xa0c
+ 25b:	68 f0 09 00 00       	push   $0x9f0
  260:	6a 01                	push   $0x1
  262:	e8 e9 03 00 00       	call   650 <printf>
 				exit();
@@ -382,7 +382,7 @@ exit();
  26c:	50                   	push   %eax
  26d:	8b 85 bc fd ff ff    	mov    -0x244(%ebp),%eax
  273:	ff 70 08             	pushl  0x8(%eax)
- 276:	68 e4 09 00 00       	push   $0x9e4
+ 276:	68 c8 09 00 00       	push   $0x9c8
  27b:	6a 01                	push   $0x1
  27d:	e8 ce 03 00 00       	call   650 <printf>
 				exit();
@@ -395,7 +395,7 @@ exit();
 			printf(1 , "copy : sumber bukan direktori\n");
  287:	52                   	push   %edx
  288:	52                   	push   %edx
- 289:	68 c4 09 00 00       	push   $0x9c4
+ 289:	68 a8 09 00 00       	push   $0x9a8
  28e:	6a 01                	push   $0x1
  290:	e8 bb 03 00 00       	call   650 <printf>
 			exit();
@@ -409,7 +409,7 @@ exit();
  29a:	8b 85 bc fd ff ff    	mov    -0x244(%ebp),%eax
  2a0:	53                   	push   %ebx
  2a1:	ff 70 04             	pushl  0x4(%eax)
- 2a4:	68 2c 0a 00 00       	push   $0xa2c
+ 2a4:	68 10 0a 00 00       	push   $0xa10
  2a9:	6a 02                	push   $0x2
  2ab:	e8 a0 03 00 00       	call   650 <printf>
     		exit();
@@ -865,7 +865,7 @@ printint(int fd, int xx, int base, int sgn)
  5ea:	31 d2                	xor    %edx,%edx
  5ec:	8d 4f 01             	lea    0x1(%edi),%ecx
  5ef:	f7 f6                	div    %esi
- 5f1:	0f b6 92 84 0a 00 00 	movzbl 0xa84(%edx),%edx
+ 5f1:	0f b6 92 88 0a 00 00 	movzbl 0xa88(%edx),%edx
   }while((x /= base) != 0);
  5f8:	85 c0                	test   %eax,%eax
     x = xx;
@@ -1186,7 +1186,7 @@ putc(int fd, char c)
  768:	89 45 d0             	mov    %eax,-0x30(%ebp)
         if(s == 0)
           s = "(null)";
- 76b:	b8 7c 0a 00 00       	mov    $0xa7c,%eax
+ 76b:	b8 80 0a 00 00       	mov    $0xa80,%eax
  770:	85 db                	test   %ebx,%ebx
  772:	0f 44 d8             	cmove  %eax,%ebx
         while(*s != 0){
@@ -1283,7 +1283,7 @@ putc(int fd, char c)
 
 000007f0 <free>:
  7f0:	55                   	push   %ebp
- 7f1:	a1 40 0d 00 00       	mov    0xd40,%eax
+ 7f1:	a1 44 0d 00 00       	mov    0xd44,%eax
  7f6:	89 e5                	mov    %esp,%ebp
  7f8:	57                   	push   %edi
  7f9:	56                   	push   %esi
@@ -1319,7 +1319,7 @@ putc(int fd, char c)
  843:	39 f1                	cmp    %esi,%ecx
  845:	74 23                	je     86a <free+0x7a>
  847:	89 08                	mov    %ecx,(%eax)
- 849:	a3 40 0d 00 00       	mov    %eax,0xd40
+ 849:	a3 44 0d 00 00       	mov    %eax,0xd44
  84e:	5b                   	pop    %ebx
  84f:	5e                   	pop    %esi
  850:	5f                   	pop    %edi
@@ -1335,7 +1335,7 @@ putc(int fd, char c)
  866:	39 f1                	cmp    %esi,%ecx
  868:	75 dd                	jne    847 <free+0x57>
  86a:	03 53 fc             	add    -0x4(%ebx),%edx
- 86d:	a3 40 0d 00 00       	mov    %eax,0xd40
+ 86d:	a3 44 0d 00 00       	mov    %eax,0xd44
  872:	89 50 04             	mov    %edx,0x4(%eax)
  875:	8b 53 f8             	mov    -0x8(%ebx),%edx
  878:	89 10                	mov    %edx,(%eax)
@@ -1354,7 +1354,7 @@ putc(int fd, char c)
  885:	53                   	push   %ebx
  886:	83 ec 0c             	sub    $0xc,%esp
  889:	8b 45 08             	mov    0x8(%ebp),%eax
- 88c:	8b 15 40 0d 00 00    	mov    0xd40,%edx
+ 88c:	8b 15 44 0d 00 00    	mov    0xd44,%edx
  892:	8d 78 07             	lea    0x7(%eax),%edi
  895:	c1 ef 03             	shr    $0x3,%edi
  898:	83 c7 01             	add    $0x1,%edi
@@ -1377,7 +1377,7 @@ putc(int fd, char c)
  8da:	8b 48 04             	mov    0x4(%eax),%ecx
  8dd:	39 cf                	cmp    %ecx,%edi
  8df:	76 3f                	jbe    920 <malloc+0xa0>
- 8e1:	39 05 40 0d 00 00    	cmp    %eax,0xd40
+ 8e1:	39 05 44 0d 00 00    	cmp    %eax,0xd44
  8e7:	89 c2                	mov    %eax,%edx
  8e9:	75 ed                	jne    8d8 <malloc+0x58>
  8eb:	83 ec 0c             	sub    $0xc,%esp
@@ -1391,7 +1391,7 @@ putc(int fd, char c)
  902:	83 c0 08             	add    $0x8,%eax
  905:	50                   	push   %eax
  906:	e8 e5 fe ff ff       	call   7f0 <free>
- 90b:	8b 15 40 0d 00 00    	mov    0xd40,%edx
+ 90b:	8b 15 44 0d 00 00    	mov    0xd44,%edx
  911:	83 c4 10             	add    $0x10,%esp
  914:	85 d2                	test   %edx,%edx
  916:	75 c0                	jne    8d8 <malloc+0x58>
@@ -1404,7 +1404,7 @@ putc(int fd, char c)
  926:	89 48 04             	mov    %ecx,0x4(%eax)
  929:	8d 04 c8             	lea    (%eax,%ecx,8),%eax
  92c:	89 78 04             	mov    %edi,0x4(%eax)
- 92f:	89 15 40 0d 00 00    	mov    %edx,0xd40
+ 92f:	89 15 44 0d 00 00    	mov    %edx,0xd44
  935:	83 c0 08             	add    $0x8,%eax
  938:	8d 65 f4             	lea    -0xc(%ebp),%esp
  93b:	5b                   	pop    %ebx
@@ -1415,11 +1415,11 @@ putc(int fd, char c)
  940:	8b 08                	mov    (%eax),%ecx
  942:	89 0a                	mov    %ecx,(%edx)
  944:	eb e9                	jmp    92f <malloc+0xaf>
- 946:	c7 05 40 0d 00 00 44 	movl   $0xd44,0xd40
+ 946:	c7 05 44 0d 00 00 48 	movl   $0xd48,0xd44
  94d:	0d 00 00 
- 950:	c7 05 44 0d 00 00 44 	movl   $0xd44,0xd44
+ 950:	c7 05 48 0d 00 00 48 	movl   $0xd48,0xd48
  957:	0d 00 00 
- 95a:	b8 44 0d 00 00       	mov    $0xd44,%eax
- 95f:	c7 05 48 0d 00 00 00 	movl   $0x0,0xd48
+ 95a:	b8 48 0d 00 00       	mov    $0xd48,%eax
+ 95f:	c7 05 4c 0d 00 00 00 	movl   $0x0,0xd4c
  966:	00 00 00 
  969:	e9 3e ff ff ff       	jmp    8ac <malloc+0x2c>

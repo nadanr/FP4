@@ -66,7 +66,7 @@ main(int argc, char *argv[])
   if(argc < 2){
     ls(".");
   42:	83 ec 0c             	sub    $0xc,%esp
-  45:	68 38 0a 00 00       	push   $0xa38
+  45:	68 2c 0a 00 00       	push   $0xa2c
   4a:	e8 b1 00 00 00       	call   100 <ls>
     exit();
   4f:	e8 2e 05 00 00       	call   582 <exit>
@@ -92,7 +92,7 @@ fmtname(char *path)
   static char buf[DIRSIZ+1];
   char *p;
 
-  // Find first character after last slash.
+  // Menemukan karakter pertama setelah slash
   for(p=path+strlen(path); p >= path && *p != '/'; p--)
   68:	83 ec 0c             	sub    $0xc,%esp
   6b:	53                   	push   %ebx
@@ -127,7 +127,7 @@ fmtname(char *path)
   a9:	83 c4 0c             	add    $0xc,%esp
   ac:	50                   	push   %eax
   ad:	53                   	push   %ebx
-  ae:	68 50 0d 00 00       	push   $0xd50
+  ae:	68 6c 0d 00 00       	push   $0xd6c
   b3:	e8 98 04 00 00       	call   550 <memmove>
   memset(buf+strlen(p), ' ', DIRSIZ-strlen(p));
   b8:	89 1c 24             	mov    %ebx,(%esp)
@@ -135,7 +135,7 @@ fmtname(char *path)
   c0:	89 1c 24             	mov    %ebx,(%esp)
   c3:	89 c6                	mov    %eax,%esi
   return buf;
-  c5:	bb 50 0d 00 00       	mov    $0xd50,%ebx
+  c5:	bb 6c 0d 00 00       	mov    $0xd6c,%ebx
 
   // Return blank-padded name.
   if(strlen(p) >= DIRSIZ)
@@ -145,7 +145,7 @@ fmtname(char *path)
   ca:	e8 f1 02 00 00       	call   3c0 <strlen>
   cf:	ba 0e 00 00 00       	mov    $0xe,%edx
   d4:	83 c4 0c             	add    $0xc,%esp
-  d7:	05 50 0d 00 00       	add    $0xd50,%eax
+  d7:	05 6c 0d 00 00       	add    $0xd6c,%eax
   dc:	29 f2                	sub    %esi,%edx
   de:	52                   	push   %edx
   df:	6a 20                	push   $0x20
@@ -187,7 +187,7 @@ ls(char *path)
  117:	83 c4 10             	add    $0x10,%esp
  11a:	85 c0                	test   %eax,%eax
  11c:	0f 88 9e 01 00 00    	js     2c0 <ls+0x1c0>
-    printf(2, "ls: cannot open %s\n", path);
+    printf(2, "ls: tidak dapat membuka %s\n", path);
     return;
   }
 
@@ -201,7 +201,7 @@ ls(char *path)
  134:	83 c4 10             	add    $0x10,%esp
  137:	85 c0                	test   %eax,%eax
  139:	0f 88 c1 01 00 00    	js     300 <ls+0x200>
-    printf(2, "ls: cannot stat %s\n", path);
+    printf(2, "ls: tidak dapat mendeteksi status %s\n", path);
     close(fd);
     return;
   }
@@ -227,7 +227,7 @@ ls(char *path)
  176:	56                   	push   %esi
  177:	6a 02                	push   $0x2
  179:	50                   	push   %eax
- 17a:	68 18 0a 00 00       	push   $0xa18
+ 17a:	68 0c 0a 00 00       	push   $0xa0c
  17f:	6a 01                	push   $0x1
  181:	e8 4a 05 00 00       	call   6d0 <printf>
     break;
@@ -334,7 +334,7 @@ ls(char *path)
  252:	83 c4 10             	add    $0x10,%esp
  255:	85 c0                	test   %eax,%eax
  257:	0f 88 c3 00 00 00    	js     320 <ls+0x220>
-        printf(1, "ls: cannot stat %s\n", buf);
+        printf(1, "ls: tidak dapat mendeteksi status %s\n", buf);
         continue;
       }
       printf(1, "%s %d %d %d\n", fmtname(buf), st.type, st.ino, st.size);
@@ -356,7 +356,7 @@ ls(char *path)
  2a0:	52                   	push   %edx
  2a1:	ff b5 b4 fd ff ff    	pushl  -0x24c(%ebp)
  2a7:	50                   	push   %eax
- 2a8:	68 18 0a 00 00       	push   $0xa18
+ 2a8:	68 0c 0a 00 00       	push   $0xa0c
  2ad:	6a 01                	push   $0x1
  2af:	e8 1c 04 00 00       	call   6d0 <printf>
  2b4:	83 c4 20             	add    $0x20,%esp
@@ -367,7 +367,7 @@ ls(char *path)
   struct stat st;
 
   if((fd = open(path, 0)) < 0){
-    printf(2, "ls: cannot open %s\n", path);
+    printf(2, "ls: tidak dapat membuka %s\n", path);
  2c0:	83 ec 04             	sub    $0x4,%esp
  2c3:	57                   	push   %edi
  2c4:	68 f0 09 00 00       	push   $0x9f0
@@ -396,7 +396,7 @@ ls(char *path)
     if(strlen(path) + 1 + DIRSIZ + 1 > sizeof buf){
       printf(1, "ls: path too long\n");
  2e0:	83 ec 08             	sub    $0x8,%esp
- 2e3:	68 25 0a 00 00       	push   $0xa25
+ 2e3:	68 19 0a 00 00       	push   $0xa19
  2e8:	6a 01                	push   $0x1
  2ea:	e8 e1 03 00 00       	call   6d0 <printf>
       break;
@@ -404,15 +404,15 @@ ls(char *path)
  2f2:	e9 92 fe ff ff       	jmp    189 <ls+0x89>
  2f7:	89 f6                	mov    %esi,%esi
  2f9:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
-    printf(2, "ls: cannot open %s\n", path);
+    printf(2, "ls: tidak dapat membuka %s\n", path);
     return;
   }
 
   if(fstat(fd, &st) < 0){
-    printf(2, "ls: cannot stat %s\n", path);
+    printf(2, "ls: tidak dapat mendeteksi status %s\n", path);
  300:	83 ec 04             	sub    $0x4,%esp
  303:	57                   	push   %edi
- 304:	68 04 0a 00 00       	push   $0xa04
+ 304:	68 30 0a 00 00       	push   $0xa30
  309:	6a 02                	push   $0x2
  30b:	e8 c0 03 00 00       	call   6d0 <printf>
     close(fd);
@@ -426,11 +426,11 @@ ls(char *path)
       memmove(p, de.name, DIRSIZ);
       p[DIRSIZ] = 0;
       if(stat(buf, &st) < 0){
-        printf(1, "ls: cannot stat %s\n", buf);
+        printf(1, "ls: tidak dapat mendeteksi status %s\n", buf);
  320:	8d 85 e8 fd ff ff    	lea    -0x218(%ebp),%eax
  326:	83 ec 04             	sub    $0x4,%esp
  329:	50                   	push   %eax
- 32a:	68 04 0a 00 00       	push   $0xa04
+ 32a:	68 30 0a 00 00       	push   $0xa30
  32f:	6a 01                	push   $0x1
  331:	e8 9a 03 00 00       	call   6d0 <printf>
         continue;
@@ -882,7 +882,7 @@ printint(int fd, int xx, int base, int sgn)
  66a:	31 d2                	xor    %edx,%edx
  66c:	8d 4f 01             	lea    0x1(%edi),%ecx
  66f:	f7 f6                	div    %esi
- 671:	0f b6 92 44 0a 00 00 	movzbl 0xa44(%edx),%edx
+ 671:	0f b6 92 60 0a 00 00 	movzbl 0xa60(%edx),%edx
   }while((x /= base) != 0);
  678:	85 c0                	test   %eax,%eax
     x = xx;
@@ -1203,7 +1203,7 @@ putc(int fd, char c)
  7e8:	89 45 d0             	mov    %eax,-0x30(%ebp)
         if(s == 0)
           s = "(null)";
- 7eb:	b8 3a 0a 00 00       	mov    $0xa3a,%eax
+ 7eb:	b8 58 0a 00 00       	mov    $0xa58,%eax
  7f0:	85 db                	test   %ebx,%ebx
  7f2:	0f 44 d8             	cmove  %eax,%ebx
         while(*s != 0){
@@ -1300,7 +1300,7 @@ putc(int fd, char c)
 
 00000870 <free>:
  870:	55                   	push   %ebp
- 871:	a1 60 0d 00 00       	mov    0xd60,%eax
+ 871:	a1 7c 0d 00 00       	mov    0xd7c,%eax
  876:	89 e5                	mov    %esp,%ebp
  878:	57                   	push   %edi
  879:	56                   	push   %esi
@@ -1336,7 +1336,7 @@ putc(int fd, char c)
  8c3:	39 f1                	cmp    %esi,%ecx
  8c5:	74 23                	je     8ea <free+0x7a>
  8c7:	89 08                	mov    %ecx,(%eax)
- 8c9:	a3 60 0d 00 00       	mov    %eax,0xd60
+ 8c9:	a3 7c 0d 00 00       	mov    %eax,0xd7c
  8ce:	5b                   	pop    %ebx
  8cf:	5e                   	pop    %esi
  8d0:	5f                   	pop    %edi
@@ -1352,7 +1352,7 @@ putc(int fd, char c)
  8e6:	39 f1                	cmp    %esi,%ecx
  8e8:	75 dd                	jne    8c7 <free+0x57>
  8ea:	03 53 fc             	add    -0x4(%ebx),%edx
- 8ed:	a3 60 0d 00 00       	mov    %eax,0xd60
+ 8ed:	a3 7c 0d 00 00       	mov    %eax,0xd7c
  8f2:	89 50 04             	mov    %edx,0x4(%eax)
  8f5:	8b 53 f8             	mov    -0x8(%ebx),%edx
  8f8:	89 10                	mov    %edx,(%eax)
@@ -1371,7 +1371,7 @@ putc(int fd, char c)
  905:	53                   	push   %ebx
  906:	83 ec 0c             	sub    $0xc,%esp
  909:	8b 45 08             	mov    0x8(%ebp),%eax
- 90c:	8b 15 60 0d 00 00    	mov    0xd60,%edx
+ 90c:	8b 15 7c 0d 00 00    	mov    0xd7c,%edx
  912:	8d 78 07             	lea    0x7(%eax),%edi
  915:	c1 ef 03             	shr    $0x3,%edi
  918:	83 c7 01             	add    $0x1,%edi
@@ -1394,7 +1394,7 @@ putc(int fd, char c)
  95a:	8b 48 04             	mov    0x4(%eax),%ecx
  95d:	39 cf                	cmp    %ecx,%edi
  95f:	76 3f                	jbe    9a0 <malloc+0xa0>
- 961:	39 05 60 0d 00 00    	cmp    %eax,0xd60
+ 961:	39 05 7c 0d 00 00    	cmp    %eax,0xd7c
  967:	89 c2                	mov    %eax,%edx
  969:	75 ed                	jne    958 <malloc+0x58>
  96b:	83 ec 0c             	sub    $0xc,%esp
@@ -1408,7 +1408,7 @@ putc(int fd, char c)
  982:	83 c0 08             	add    $0x8,%eax
  985:	50                   	push   %eax
  986:	e8 e5 fe ff ff       	call   870 <free>
- 98b:	8b 15 60 0d 00 00    	mov    0xd60,%edx
+ 98b:	8b 15 7c 0d 00 00    	mov    0xd7c,%edx
  991:	83 c4 10             	add    $0x10,%esp
  994:	85 d2                	test   %edx,%edx
  996:	75 c0                	jne    958 <malloc+0x58>
@@ -1421,7 +1421,7 @@ putc(int fd, char c)
  9a6:	89 48 04             	mov    %ecx,0x4(%eax)
  9a9:	8d 04 c8             	lea    (%eax,%ecx,8),%eax
  9ac:	89 78 04             	mov    %edi,0x4(%eax)
- 9af:	89 15 60 0d 00 00    	mov    %edx,0xd60
+ 9af:	89 15 7c 0d 00 00    	mov    %edx,0xd7c
  9b5:	83 c0 08             	add    $0x8,%eax
  9b8:	8d 65 f4             	lea    -0xc(%ebp),%esp
  9bb:	5b                   	pop    %ebx
@@ -1432,11 +1432,11 @@ putc(int fd, char c)
  9c0:	8b 08                	mov    (%eax),%ecx
  9c2:	89 0a                	mov    %ecx,(%edx)
  9c4:	eb e9                	jmp    9af <malloc+0xaf>
- 9c6:	c7 05 60 0d 00 00 64 	movl   $0xd64,0xd60
+ 9c6:	c7 05 7c 0d 00 00 80 	movl   $0xd80,0xd7c
  9cd:	0d 00 00 
- 9d0:	c7 05 64 0d 00 00 64 	movl   $0xd64,0xd64
+ 9d0:	c7 05 80 0d 00 00 80 	movl   $0xd80,0xd80
  9d7:	0d 00 00 
- 9da:	b8 64 0d 00 00       	mov    $0xd64,%eax
- 9df:	c7 05 68 0d 00 00 00 	movl   $0x0,0xd68
+ 9da:	b8 80 0d 00 00       	mov    $0xd80,%eax
+ 9df:	c7 05 84 0d 00 00 00 	movl   $0x0,0xd84
  9e6:	00 00 00 
  9e9:	e9 3e ff ff ff       	jmp    92c <malloc+0x2c>
